@@ -35,6 +35,6 @@ How it was done:
 Authors
 ---
 
-Ralph Bean <ralph@redhat.com>
-Nate Case <qalthos@gmail.com>
-Remy DeCausemaker <remyd@civx.us>
+ - Ralph Bean <ralph@redhat.com>
+ - Nate Case <qalthos@gmail.com>
+ - Remy DeCausemaker <remyd@civx.us>
