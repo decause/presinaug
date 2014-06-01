@@ -5,16 +5,16 @@ Inaugural Addresses from George Washington to Barack Obama.
 
 *Fun with NLTK, pygal, and word_cloud*
 
-NLTK - http://nltk.org
+[NLTK](http://nltk.org "NLTK")
 ---
 Analyze the full-text, tag parts of speech, provide word frequency
 distirbutions
 
-pygal - http://pygal.org
+[pygal](http://pygal.org "pygal")
 ---
 Create a barchart showing the Parts of Speech in the form of an .svg
 
-word_cloud - https://github.com/amueller/word_cloud
+[word_cloud](https://github.com/amueller/word_cloud "word_cloud")
 ---
 Generate a wordcloud (independent from NLTK) in the form of a .png
 
@@ -25,15 +25,12 @@ Generate a wordcloud (independent from NLTK) in the form of a .png
 How it was done:
 ---
 - wget the full set of texts
-- strip of the gutenberg specific language (keep original for attribution
-  though)
+- strip of the gutenberg specific language (but keep the original file for
+  attribution's sake)
 - run the presinaug-nltk.py
 - run the presinaug-charts.py
 - run the presinaug-cloud.py
 
-Get the full set of texts
----
- - wget http://www.gutenberg.org/cache/epub/4938/pg4938.txt
 
 Authors
 ---
