@@ -1,0 +1,12 @@
+Cython>=0.19.1
+CairoSVG==1.0.7
+Pillow==2.4.0
+Pygments==1.6
+cairocffi==0.5.4
+cffi==0.8.2
+lxml==3.3.5
+nltk==2.0.4
+numpy==1.7.1
+pycparser==2.10
+pygal==1.4.6
+https://github.com/amueller/word_cloud/archive/master.zip
