@@ -32,6 +32,24 @@ How it was done:
 - run the presinaug-cloud.py
 
 
+Installing
+---
+
+Though these are disparate tools, you can install each to run the component
+scripts manually. Start with:
+
+
+`pip install Cython`
+
+This above line goes into an `install_requires` section in a proper setup.py (coming soon).
+
+After that, you then run:
+
+`pip install -r requirements.txt`
+
+which should contain all the component libraries you'll need
+
+
 Authors
 ---
 
