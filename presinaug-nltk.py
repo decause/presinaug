@@ -6,14 +6,13 @@ import csv
 import datetime
 
 
-
 print "* Loading corpus"
-#raw = gutenberg.raw('melville-moby_dick.txt')
-#raw = gutenberg.raw('bible-kjv.txt')
-#raw = gutenberg.raw('blake-poems.txt')
+# raw = gutenberg.raw('melville-moby_dick.txt')
+# raw = gutenberg.raw('bible-kjv.txt')
+# raw = gutenberg.raw('blake-poems.txt')
 
-#Open a csv, read the whole thing
-with open ('presinaug-addresses.txt', "r") as f:
+# Open a csv, read the whole thing
+with open('presinaug-addresses.txt', "r") as f:
     raw = f.read()
 
 print "* Tokenizing"
@@ -24,7 +23,7 @@ print "* Tagging parts of speech"
 parts_of_speech = nltk.pos_tag(tokens)
 
 print "* Converting POS list into a dict for lookup"
-# TODO -- fix this.  this is going to fuck up on homonyms
+# TODO -- fix this.  this is going to have a hard time with homonyms
 parts_of_speech = dict(parts_of_speech)
 
 # You can ban other parts of speech by adding their tags to this list.
@@ -120,13 +119,14 @@ banned_words = [
     'whom',
     'Whom',
 ]
+
 print "* Stripping stuff we don't want"
 # Strip punctuation and banned parts of speech
 tokens = [
     token for token in tokens if (
-        # Kill punctuation
+        # remove punctuation
         token.isalpha() and
-        # Kill parts of speech that we don't want.
+        # remove parts of speech that we don't want.
         not parts_of_speech[token] in banned_parts_of_speech and
         not token in banned_words #and
         #len(token) > 4
@@ -136,21 +136,25 @@ tokens = [
 print "* Building frequency distribution"
 words = FreqDist(tokens)
 
-N = 20
-def showWords(N=10000):
-    print "* Printing top %i words" % N
+n = 20
+
+def showWords(n=10000):
+    '''
+    Open a CSV, write top n words to it, print top n words
+    '''
+    print "* Printing top %i words" % n
     f = open('presinaug.csv', 'wb')
     writer = csv.writer(f)
     for i, pair in enumerate(words.items()):
         word, count = pair
         row = word, count, parts_of_speech[word]
-        #row = "%r, %r, %r" % (word, count, parts_of_speech[word])
-        #row = json.dumps([word, count, parts_of_speech[word]], separators=(',',':'))
+        # row = "%r, %r, %r" % (word, count, parts_of_speech[word])
+        # row = json.dumps([word, count, parts_of_speech[word]], separators=(',',':'))
         writer.writerow(row)
-        print "%r appeared %i times.  Its part of speech is %r" % (
+        print "%r appeared %i times. Its part of speech is %r" % (
             word, count, parts_of_speech[word],
         )
-        if i > N:
+        if i > n:
             break
     f.close()
     return (word, count, parts_of_speech)
