@@ -31,7 +31,7 @@ bar_chart.title = 'Parts of Speech in US Presidential Inaugural Addresses'
 with open('presinaug.csv', 'rb') as f:
     reader = csv.reader(f)
     for rownum,row in enumerate(reader):
-        # {row[0]}.format(row=row) is Just the lab for the key, made by string formating 0th item in the row
+        # {row[0]}.format(row=row) is Just the label for the key, made by string formating 0th item in the row
         # [(rownum, int(row[1]))]) is a list of tuples, starting with the rownumber (from enum) and the 1st item in row
         xy_chart.add(row[0], [(rownum, int(row[1]))])
 
