@@ -10,11 +10,11 @@ from nltk.corpus import gutenberg
 
 #if not os.path.exists('partsofspeech-help.txt'):
 
-print "*Creating Parts of Speech Help File" 
-with open('partsofspeech-help.txt', "w") as f:
-    helptext = nltk.help.upenn_tagset()
-    print type(helptext)
-    raw = f.write(helptext)
+#print "*Creating Parts of Speech Help File" 
+#with open('partsofspeech-help.txt', "w") as f:
+#    helptext = nltk.help.upenn_tagset()
+#    print type(helptext)
+#    raw = f.write(helptext)
 
 
 print "* Loading corpus"
@@ -23,7 +23,7 @@ print "* Loading corpus"
 # raw = gutenberg.raw('blake-poems.txt')
 
 # Open a csv, read the whole thing
-with open('presinaug-addresses.txt', "r") as f:
+with open('en.txt', "r") as f:
     raw = f.read()
 
 print "* Tokenizing"
@@ -152,14 +152,14 @@ tokens = [
 print "* Building frequency distribution"
 words = FreqDist(tokens)
 
-n = 20
+n = 250000
 
-def showWords(n=10000):
+def showWords(n):
     '''
     Open a CSV, write top n words to it, print top n words
     '''
     print "* Printing top %i words" % n
-    f = open('pos.csv', 'wb')
+    f = open('en.csv', 'wb')
     writer = csv.writer(f)
     for i, pair in enumerate(words.items()):
         word, count = pair
@@ -175,4 +175,4 @@ def showWords(n=10000):
     f.close()
     return (word, count, parts_of_speech)
 
-showWords()
+showWords(n)
