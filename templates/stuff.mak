@@ -1,8 +1,15 @@
 <%include file="header.mak"/>
 <head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://bootflat.github.io/bootflat/css/bootflat.css">
+    <link rel="stylesheet" href="static/css/site.css">
+    <link rel="stylesheet" href="static/css/pos.css">
 
 </head>
+    <script src="https://bootflat.github.io/bootflat/js/icheck.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<body>
 
 <h2>StuffList</h2>
 <ul>
@@ -32,14 +39,10 @@
     % endfor
 </ul>
 
-<%doc>
 <h2>Parts of Speech</h2>
-<ul>
     % for name, number, value in pos_legend:
-    <li>${name}, ${number}, ${value}</li>
+        <span class="${value}" data-toggle="tooltip" data-placement="top" title="${number}, ${value}">${name}</span>
     % endfor
-</ul>
-</%doc>
 
 <h1>The Raw</h1>
 <!-- This is a manual styling, but next will be checking the part of speech,
@@ -61,5 +64,6 @@ George? Pobably split problems...-->
 </div>
 
 <p>${raw}</p>
+</body>
 
 <%include file="footer.mak"/>
