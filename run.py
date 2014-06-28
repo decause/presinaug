@@ -1,5 +1,6 @@
 import os
 import csv
+import kitchen
 
 from flask import Flask
 from flask.ext.mako import MakoTemplates, render_template
@@ -24,10 +25,26 @@ stufftuple = (('one', '1', 1,),
 stufflist = ['one', 'two', 'three']
 
 
+with open('presinaug-addresses-head.txt', "r") as f:
+    raw = f.read().decode('utf8')
+
+# 
+# with open('nltkhelpupenntagset.csv', 'rb') as f:
+#     reader = csv.reader(f, delimiter="|")
+#     pos_legend = tuple(reader)
+#     print pos_legend
+
+with open('pos.csv', 'rb') as f:
+    reader = csv.reader(f)
+    pos_legend = tuple(reader)
+    print pos_legend
+
+
 @app.route("/")
 def index():
     return render_template('stuff.mak', name='mako', stufftuple=stufftuple,
-                            stuffdict=stuffdict, stufflist=stufflist)
+                            stuffdict=stuffdict, stufflist=stufflist, raw=raw,
+                            pos_legend=pos_legend)
 
 @app.route("/about")
 def about():
