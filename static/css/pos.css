@@ -1,0 +1,40 @@
+.CC { color: white; background: darkred; }
+.CD { color: white; background: black; }
+.DT { background: yellow; }
+.EX { background: yellow; }
+.FW { background: yellow; }
+.IN { background: yellow; }
+.JJ { background: yellow; }
+.JJR { background: yellow; }
+.JJS { background: yellow; }
+.LS { background: yellow; }
+.MD { background: yellow; }
+.MN { background: yellow; }
+.NN { color: black; background: white; }
+.NNP { background: #FF0000; }
+.NNPS { background: #FF3300; }
+.NNS {
+    background: #FF6600;}
+.POT {
+    background: #FF0066;}
+.POS {
+    background: #FF3366;}
+.PRP { background: yellow; }
+.PRP$ { background: yellow; }
+.RB { color: white; background: #9900CC; }
+.RBR { background: #9933CC; }
+.RBS { color: white; background: #9966CC; }
+.RP { background: #9999CC; }
+.SYM { background: white; }
+.UH { background: #66FFFF; }
+.VB { color: white; background: #336600; }
+.VBP { color: white; background: #006600; }
+.VBD { background: #339900; }
+.VBG { background: #33CC00; }
+.VBN { background: #33FF00; }
+.VBZ { background: #33FF33; }
+.WDT { background: yellow; }
+.WP { background: yellow; }
+.WP\$ { background: yellow; }
+.WRB { background: yellow; }
+
