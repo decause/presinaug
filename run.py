@@ -28,7 +28,6 @@ stufflist = ['one', 'two', 'three']
 with open('presinaug-addresses-head.txt', "r") as f:
     raw = f.read().decode('utf8')
 
-# 
 # with open('nltkhelpupenntagset.csv', 'rb') as f:
 #     reader = csv.reader(f, delimiter="|")
 #     pos_legend = tuple(reader)
@@ -39,6 +38,41 @@ with open('pos.csv', 'rb') as f:
     pos_legend = tuple(reader)
     print pos_legend
 
+from sqlalchemy import create_engine
+from knowledge.model import setup_knowledge
+
+DBSession = setup_knowledge('sqlite:///knowledge.db')
+
+from knowledge.model import Entity
+
+monster = Entity(u'Monster')
+fairy = Entity(u'Fairy')
+rjbean = Entity(u'rjbean')
+monster[u'color'] = u'Green'
+monster[u'name'] = u'Lotharrr'
+fairy[u'flies'] = True
+fairy[u'name'] = u'Bell'
+rjbean[u'name'] = u'ralph'
+rjbean[u'flies'] = False
+rjbean[u'hacks'] = True
+
+DBSession.add(monster)
+DBSession.add(fairy)
+DBSession.add(rjbean)
+DBSession.commit()
+
+def theFacts():
+    for entity in knowledge_query:
+        yield entity, entity.facts.values()
+
+data = theFacts()
+
+knowledge_query = DBSession.query(Entity).all()
+
+for element in data:
+    print element
+
+datadict = {n: nk for element in data}
 
 @app.route("/")
 def index():
@@ -54,6 +88,14 @@ def about():
 @app.route("/matter")
 def matter():
     return render_template('matter.mak', name='mako')
+
+@app.route("/facts")
+def facts():
+    knowledge_query = DBSession.query(Entity).all()
+    from flask_mako import Template
+    return Template("hello ${datadict}!").render(datadict=datadict, knowledge_query=knowledge_query)
+    #return render_template('about.mak', name='mako')
+
 
 
 periodictable = [
